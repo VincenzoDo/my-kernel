@@ -1,0 +1,14 @@
+--- af_vsock_old.h	2015-11-04 12:51:14.823207000 +0100
++++ af_vsock.h	2015-10-09 10:58:22.944437000 +0200
+
+@@ -172,8 +173,10 @@
+ void vsock_remove_bound(struct vsock_sock *vsk);
+ void vsock_remove_connected(struct vsock_sock *vsk);
+ struct sock *vsock_find_bound_socket(struct sockaddr_vm *addr);
++struct sock *vsock_find_unbound_socket(struct sockaddr_vm *addr);
+ struct sock *vsock_find_connected_socket(struct sockaddr_vm *src,
+ 					 struct sockaddr_vm *dst);
+ void vsock_for_each_connected_socket(void (*fn)(struct sock *sk));
++int vsock_bind_dgram_generic(struct vsock_sock *vsk, struct sockaddr_vm *addr);
+ 
+ #endif /* __AF_VSOCK_H__ */
